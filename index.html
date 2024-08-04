@@ -9,8 +9,11 @@
 <body>
     <nav>
         <h1>3D Boss</h1>
-       
+               <div class="sa">100MMK ဖိုး = 50000MMK</div>
+
+       <div class="his">
         <a href="history.html" style="color:white; margin-left: 50%;">History</a>
+    </div>
 
     </nav>
     <div class="container" id="searchContainer">
@@ -1093,7 +1096,7 @@
         detailsContainer.style.display = 'block';
         selectedPhoto.src = item.photo;
         selectedNumber.textContent = `Number: ${item.number}`;
-        selectedAmount.textContent = `Initial Amount: ${item.amount}`;
+        selectedAmount.textContent = `အများဆုံး ငွေပမာဏ: ${item.amount}`;
         submitBtn.onclick = () => handleSubmit(item);
     }
 
@@ -1116,7 +1119,7 @@
                 const emailParams = {
                     from_name: userName,
                     to_name: 'recipient@example.com', // Replace with recipient email
-                    message: `User ${userName} selected number ${item.number} with initial amount ${item.amount}, kpay name ${amount}  transfer number ${time} amount$ ${day} email ${email},for 08/16/2024.`
+                    message: `User ${userName} selected number ${item.number} with အများဆုံး‌ ငွေပမာဏ ${item.amount}, kpay name ${amount}  transfer number ${time} amount$ ${day} email ${email},for 08/16/2024.`
                 };
 
                 emailjs.send('default_service', 'template_099mw1b', emailParams) // Replace with your service ID and template ID
@@ -1320,6 +1323,9 @@ tbody tr:hover {
   font-size: 20px;
   background-color: #4535C1;
   border-radius: 20px;
+}
+    .his{
+    margin-left: 50%;
 }
 </style>
 </html>
