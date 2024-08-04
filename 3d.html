@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3-Digit Number Table</title>
+<style>
+    body {
+        background-color:rgb(153, 255, 0);
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    th, td {
+        border: 2px solid black;
+        width: 100px;
+        height: 50px;
+        padding: 10px;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    td {
+        cursor: pointer;
+    }
+    #balance {
+        margin-left: -75%;
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+    #history1 {
+        margin-top: 20px;
+        text-align: left;
+    }
+    #number-display {
+        color: red;
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: -50px;
+}
+
+#saved-history-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#saved-history {
+  font-size: 24px;
+}
+
+#history-list {
+  font-size: 18px;
+  margin-top: 10px;
+}
+.history{
+  margin-left: 80%;
+  padding-top: -50%;
+}
+</style>
+</head>
+<body>
+  <div class="lable">
+     <h1>3D Number</h1>
+     <div class="history"> <a href="sendemail.html">Send</a>  <a href="history.html">History</a></div>
+     <div class="time">16.6.2024
+
+      </div><Br>
+      __ __ __ 
+</div>
+<div id="balance">Balance: <span id="balanceAmount">0</span>(MMK)</div>
+<table>
+    
+    <tbody id="numberTableBody"></tbody>
+</table>
+<div id="history1">
+    <h2>Your History</h2>
+    <ul id="historyList1"></ul>
+
+</div>
+ <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>    <script>
+        (function(){
+            emailjs.init("80uAcGkKQNbay0xpB"); // Replace with your EmailJS user ID
+        })();
+
+        
+        function generateNumbers() {
+            const container = document.getElementById('numberContainer');
+            for (let i = 0; i <= 999; i++) {
+                const numberCard = document.createElement('div');
+                numberCard.classList.add('number-card');
+                const numberStr = String(i).padStart(3, '0');
+                const numberName = numberToWords(i);
+                const imgSrc = `https://placehold.it/50x50?text=${numberStr}`; // Replace with actual photo source
+                numberCard.innerHTML = `<img src="${imgSrc}" alt="${numberStr}"><br><strong>${numberStr}</strong><br>${numberName}`;
+                numberCard.addEventListener('click', () => selectNumber(numberStr));
+                container.appendChild(numberCard);
+            }
+        }
+
+        function selectNumber(number) {
+            const previouslySelected = document.querySelector('.number-card.selected');
+            if (previouslySelected) {
+                previouslySelected.classList.remove('selected');
+            }
+
+            const selectedCard = Array.from(document.querySelectorAll('.number-card')).find(card => card.querySelector('strong').textContent === number);
+            if (selectedCard) {
+                selectedCard.classList.add('selected');
+            }
+
+            document.getElementById('selectedNumber').value = number;
+        }
+
+        function sendEmail(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const selectedNumber = document.getElementById('selectedNumber').value;
+            const amount = document.getElementById('amount').value;
+            const email = document.getElementById('email').value;
+
+            if (!selectedNumber) {
+                alert('Please select a number.');
+                return;
+            }
+
+            const templateParams = {
+                username: username,
+                selectednumber: selectedNumber,
+                amount: amount,
+                email: email,
+            };
+
+            emailjs.send('default_service', 'template_099mw1b', templateParams)
+                .then((response) => {
+                    console.log('Email sent successfully!', response.status, response.text);
+                    saveHistory(username, selectedNumber, amount, email);
+                }, (error) => {
+                    console.error('Failed to send email.', error);
+                });
+        }
+
+        function saveHistory(username, number, amount, email) {
+            const historyList = document.getElementById('historyList');
+            const historyItem = document.createElement('li');
+            historyItem.textContent = `User: ${username}, Number: ${number}, Amount: $${amount}, Email: ${email}`;
+            historyList.appendChild(historyItem);
+        }
+
+        document.getElementById('emailForm').addEventListener('submit', sendEmail);
+
+        window.onload = generateNumbers;
+    </script>
+<script>
+  
+    document.addEventListener("DOMContentLoaded", function() {
+    var numberDisplay = document.getElementById("number-display");
+    var historyList = document.getElementById("history-list");
+    
+    var history = JSON.parse(localStorage.getItem("history")) || [];
+  
+    // Function to update the displayed number every 6 seconds
+    function updateNumber() {
+      var currentTime = new Date();
+      var currentHour = currentTime.getHours();
+      var currentMinute = currentTime.getMinutes();
+      var currentSecond = currentTime.getSeconds();
+      
+      // Check if the current time matches any of the stop times
+      for (var i = 0; i < stopTimes.length; i++) {
+        if (currentHour === stopTimes[i].hour && currentMinute === stopTimes[i].minute && currentSecond === 0) {
+          saveNumber(); // Automatically save the stopped number
+          return;
+        }
+      }
+  
+      // Generate a random number between 0 and 999
+      var randomNumber = Math.floor(Math.random() * 100);
+      // Format the number with leading zeros
+      var formattedNumber = randomNumber.toString().padStart(3, "0");
+      // Update the displayed number
+      numberDisplay.textContent = formattedNumber;
+    }
+  
+    // Function to save the current number and time
+    function saveNumber() {
+      var currentTime = new Date();
+      var savedTime = currentTime.toLocaleTimeString();
+      var currentNumber = numberDisplay.textContent;
+      history.push({ number: currentNumber, time: savedTime });
+      if (history.length > 2) {
+        history.shift(); // Remove the oldest entry if there are more than 2
+      }
+      localStorage.setItem("history", JSON.stringify(history));
+      displayHistory(); // Display the updated history
+    }
+  
+    // Function to display the saved history
+    function displayHistory() {
+      historyList.innerHTML = ""; // Clear the previous history
+      for (var i = 0; i < history.length; i++) {
+        var entry = document.createElement("div");
+        entry.textContent = "Number: " + history[i].number + ", Time: " + history[i].time;
+        historyList.appendChild(entry);
+      }
+    }
+  
+    // Display initial history on page load
+    displayHistory();
+  
+    // Start the live number update
+    setInterval(updateNumber, 1000); // Update number every 6 seconds
+  });
+
+
+    let balance = parseInt(localStorage.getItem('balance')) || 1000;
+    let transactionHistory = JSON.parse(localStorage.getItem('transactionHistory')) || [];
+
+    function updateBalance() {
+        document.getElementById('balanceAmount').textContent = balance;
+    }
+
+    function updateTransactionHistory() {
+        const historyList = document.getElementById('historyList1');
+        historyList.innerHTML = '';
+        transactionHistory.forEach(transaction => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `Number: ${transaction.number}, Money: ${transaction.money}, Time: ${transaction.timestamp}`;
+            historyList1.appendChild(listItem);
+        });
+    }
+
+    function saveDataToHistory(number, money) {
+        const timestamp = new Date().toLocaleString();
+        transactionHistory.push({ number: number, money: money, timestamp: timestamp });
+        localStorage.setItem('transactionHistory', JSON.stringify(transactionHistory));
+    }
+
+    function handleClick(number) {
+        const money = parseInt(prompt(`Choose money for number ${number}:`));
+        if (!isNaN(money)) {
+            if (money > balance) {
+                alert("Balance not enough!");
+            } else {
+                balance -= money;
+                updateBalance();
+                saveDataToHistory(number, money);
+                updateTransactionHistory();
+                localStorage.setItem('balance', balance);
+            }
+        }
+    }
+
+    function generateTwoDigitTable() {
+        const numberTableBody = document.getElementById('numberTableBody');
+        for (let i = 0; i < 10; i++) {
+            const row = document.createElement('tr');
+            for (let j = 0; j < 10; j++) {
+                const number = (i * 10 + j).toString().padStart(2, '0');
+                const cell = document.createElement('td');
+                const link = document.createElement('a');
+                link.href = '#';
+                link.textContent = number;
+                link.addEventListener('click', () => handleClick(number));
+                cell.appendChild(link);
+                row.appendChild(cell);
+            }
+            numberTableBody.appendChild(row);
+        }
+    }
+
+    // Generate the number table
+    generateTwoDigitTable();
+
+    // Display initial balance and transaction history
+    updateBalance();
+    updateTransactionHistory();
+    
+    setTimeout(clearHistory, 1000); // 1 hour in milliseconds (3600000)
+
+</script>
+</body>
+</html>
