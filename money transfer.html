@@ -2,303 +2,155 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PTWan</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>money transfer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        input[type="text"], input[type="number"], input[type="tel"], textarea {
+            width: 80%;
+            padding: 15px;
+            height: 10px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .history-log {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        h2{
+            align-items: center;
+            justify-content: center;
+            display: grid;
+        }
+        button{
+            width: 50%;
+            margin-left: 20%;
+            border-radius: 10px;
+            align-items: center;
+            justify-content: center;
+            display: grid;
+        }
+    </style>
 </head>
 <body>
-<div id="results"></div>
-  <div class="slideshow-container">
-    <div class="slide fade">
-        <img src="photo\kpay.png" alt="Image 1" class="slide-image">
-    </div>
-    <div class="slide fade">
-        <img src="photo\unnamed.png" alt="Image 2" class="slide-image">
-    </div>
-    <div class="slide fade">
-        <img src="photo\karsikornbank.webp" alt="Image 3" class="slide-image">
-    </div>
-    <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
-    <a class="next" onclick="changeSlide(1)">&#10095;</a>
-</div>
-<h1>$ Money Transfer</h1>
+    <div class="form-container">
+        <h2>Money transfer</h2>
+        <form id="emailForm">
+            <label></label>
+            <input type="text" name="from_name" id="name" placeholder="bank account name">
+            <input type="text" name="number" id="number" placeholder="id number">
+            <input type="text" name="email" id="email" placeholder="email">
 
-<div class="dots-container">
-    <span class="dot" onclick="currentSlide(1)"></span>
-    <span class="dot" onclick="currentSlide(2)"></span>
-    <span class="dot" onclick="currentSlide(3)"></span>
-</div>
-<h3>Choose Your Bank</h3>
-<h3>ဘဏ်ရွှေးချယ်ပါ.</h3>
-    <div class="container">
-        <div class="wrapper">
-          
-            
-           
-              <div class="item">
-                <a href="money transfer.html" style="color: black;"><img src="photo\karsikornbank.webp" width="100px"></a><a href="money transfer.html" style="color: rgb(0, 0, 0);"><h5>Kasikorn Bank</h5></a>  
-              </div>
-              <div class="item">
-                <a href="money transfer.html" style="color: black;"><img src="photo\bangkokbank.png" width="100px"></a><a href="money transfer.html" style="color: rgb(0, 0, 0);"><h5>Bangkok Bank</h5></a>  
-              </div>
-              <div class="item">
-                <a href="money transfer.html" style="color: black;"><img src="photo\truemoney.webp" width="100px"></a><a href="money transfer.html" style="color: rgb(0, 0, 0);"><h5>True Money</h5></a>  
-              </div>
-              
-              <div class="item">
-                <a href="money transfer.html" style="color: black;"><img src="photo\kbzbank.jpg" width="100px"></a><a href="money transfer.html" style="color: rgb(0, 0, 0);"><h5>KBZ Bank</h5></a>  
-              </div>
-              <div class="item">
-                <a href="money transfer.html" style="color: black;"><img src="photo\kpay.png" width="100px"></a><a href="money transfer.html" style="color: rgb(0, 0, 0);"><h5>KBZ Pay</h5></a>  
-              </div>
-              <div class="item">
-                <a href="money transfer.html" style="color: black;"><img src="photo\yomabank.jpg" width="100px"></a><a href="money transfer.html" style="color: rgb(0, 0, 0);"><h5>Yoma Bank</h5></a>  
-              </div>
-              
-              
+            <input type="tel" id="phone" placeholder="Your Phone Number" required>
+            <input type="number" id="quantity" placeholder="amount" required>
+            <input type="text" id="bank" placeholder="convert to" required>
+            <input type="text" id="address" placeholder="name / number / amount" required>
 
-              
-              
-        </div>
-    </div>
-    <hr>
-    
-    
-    <h3>Game coin</h3>
-    <div class="container">
-        <div class="wrapper">
-          
-            
-            <div class="item">
-                <a href="mlbb.html" style="color: black;"><img src="photo\mll.jpg" width="100px"></a><a href="mlbb.html" style="color: rgb(0, 0, 0);"><h5>Mlbb Diamond</h5></a>  
-              </div>
-              <div class="item">
-                <a href="pupg.html" style="color: black;"><img src="photo\PUPGG.jpg" width="100px"></a><a href="pupg.html" style="color: rgb(0, 0, 0);"><h5>Pupg UC</h5></a>  
-              </div>
-              
+            <button type="submit">Send</button>
+        </form>
 
-              
-              
-        </div>
-    </div>
-    <hr>
-    <h3>2D/3D Boss</h3>
-    <div class="container">
-        <div class="wrapper">
-          
-            
-            <div class="item">
-                <a href="3dboss.html" style="color: black;"><img src="photo\unnamed.png" width="100px"></a><a href="3dboss.html" style="color: rgb(0, 0, 0);"><h5>3D BOSS</h5></a>  
-              </div>
-              
-              
-
-              
-              
+        <div class="history-log" id="historyLog">
+            <h3>History</h3>
+            <div id="historyContent"></div>
         </div>
     </div>
 
-   
-    <script >
-        let currentSlideIndex = 0;
-      const slides = document.querySelectorAll('.slide');
-      const dots = document.querySelectorAll('.dot');
-      
-      function showSlide(index) {
-          if (index >= slides.length) {
-              currentSlideIndex = 0;
-          } else if (index < 0) {
-              currentSlideIndex = slides.length - 1;
-          } else {
-              currentSlideIndex = index;
-          }
-          
-          slides.forEach((slide, i) => {
-              slide.style.display = i === currentSlideIndex ? 'block' : 'none';
-          });
-          
-          dots.forEach((dot, i) => {
-              dot.className = dot.className.replace(" active", "");
-              if (i === currentSlideIndex) {
-                  dot.className += " active";
-              }
-          });
-      }
-      
-      function changeSlide(direction) {
-          showSlide(currentSlideIndex + direction);
-      }
-      
-      function currentSlide(index) {
-          showSlide(index - 1);
-      }
-      
-      // Initialize the slideshow
-      showSlide(currentSlideIndex);
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init('80uAcGkKQNbay0xpB'); // Replace 'YOUR_USER_ID' with your EmailJS user ID
+        })();
 
+        document.getElementById('emailForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var name = document.getElementById('name').value;
+            var number = document.getElementById('number').value;
+
+            var phone = document.getElementById('phone').value;
+            var email = document.getElementById('email').value;
+
+            var quantity = document.getElementById('quantity').value;
+            var bank = document.getElementById('bank').value;
+
+            var address = document.getElementById('address').value;
+
+            var templateParams = {
+                name: name,
+                number: number,
+                phone: phone,
+                email: email,
+                quantity: quantity,
+                bank: bank,
+                address: address
+            };
+
+            emailjs.send('service_yzaslqr', 'template_64dyjwr', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    addToHistory(name, phone, bank, quantity, address);
+                }, function(error) {
+                    console.log('FAILED...', error);
+                });
+        });
+
+        function addToHistory(name, phone, bank, quantity, address) {
+            var historyContent = document.getElementById('historyContent');
+            var entry = document.createElement('div');
+            entry.innerHTML = `<strong>${name}</strong> - ${quantity} amount  <br><small>Phone: ${phone} | <strong>${bank}</strong> - ${address}</small>`;
+            historyContent.appendChild(entry);
+
+            // Save history to localStorage
+            saveHistoryToLocalStorage(name, phone,bank, quantity, address);
+        }
+
+        function saveHistoryToLocalStorage(name, phone, bank, quantity, address) {
+            var history = JSON.parse(localStorage.getItem('emailHistory')) || [];
+            history.push({ name, phone, bank, quantity, address });
+            localStorage.setItem('emailHistory', JSON.stringify(history));
+        }
+
+        function loadHistoryFromLocalStorage() {
+            var history = JSON.parse(localStorage.getItem('emailHistory')) || [];
+            var historyContent = document.getElementById('historyContent');
+
+            history.forEach(function(entry) {
+                var entryDiv = document.createElement('div');
+                entryDiv.innerHTML = `<strong>${entry.name}</strong> -${entry.quantity} items <br><small>Phone: ${entry.phone} | <strong>${bank}</strong> - ${entry.address}</small>`;
+                historyContent.appendChild(entryDiv);
+            });
+        }
+
+        // Load history when the page loads
+        window.onload = loadHistoryFromLocalStorage;
     </script>
 </body>
-<style>
-    body{
-        background-color:gray;
-    }
-    h1{
-        justify-content: center;
-        display: grid;
-        align-items: center;
-    }
-  .search-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-#searchInput {
-    width: 0;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    transition: width 0.4s ease;
-    opacity: 0;
-    overflow: hidden;
-}
-
-#searchLogo {
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    transition: transform 0.4s ease;
-}
-
-.search-container:hover #searchInput {
-    width: 300px;
-    opacity: 1;
-}
-
-.search-container:hover #searchLogo {
-    transform: scale(1.1);
-}
-
-#results {
-    margin-top: 20px;
-    width: 300px;
-}
-    .container{
-        width: 100%;
-        height: 100%;
-        background-color: rgb(218, 213, 213);
-        
-    }
-    .wrapper{
-        align-items: center;
-        
-        display:flex;
-       
-        gap: 20px;
-        animation-name: animate;
-        animation-duration: 2s;
-        overflow-x: auto;
-        animation-direction: alternate;
-    }
-   
-    
-    
-    .item{
-        margin-top: 10px;
-    }
-    body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
-}
-
-.slideshow-container {
-    position: relative;
-    max-width: 100%;
-    margin: auto;
-    overflow: hidden;
-    background-color: #000;
-}
-
-.slide {
-    display: none;
-}
-
-.slide-image {
-    width: 100%;
-}
-
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-}
-
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
-}
-
-@keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
-}
-
-.dots-container {
-    text-align: center;
-    padding: 20px;
-    background: #ddd;
-}
-
-.dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-    background-color: #717171;
-}
-
-</style>
 </html>
