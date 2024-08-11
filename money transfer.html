@@ -58,8 +58,7 @@
             display: grid;
         }
         button{
-            width: 50%;
-            margin-left: 20%;
+            width: 100%;
             border-radius: 10px;
             align-items: center;
             justify-content: center;
@@ -74,24 +73,24 @@
         <form id="emailForm">
             <label></label>
             <div class="bk"><i class="bi bi-person-circle"
-                style="color: rgb(2, 3, 6);font-size: 150%; "></i> <input type="text" name="from_name" id="name" placeholder="bank account name"></div>
+                style="color: rgb(2, 3, 6);font-size: 150%; "></i> <input type="text" name="from_name" id="name" placeholder="Bank account name" required ></div>
             
                 <div class="bk"><i class="bi bi-vector-pen"
-                    style="color: rgb(0, 0, 0);font-size: 150%; "></i>    <input type="text" name="number" id="number" placeholder="id number"></div>
+                    style="color: rgb(0, 0, 0);font-size: 150%; "></i>    <input type="text" name="number" id="number" placeholder="Id number" required></div>
            
                     <div class="bk"><i class="bi bi-google"
-                        style="color: rgb(209, 22, 22);font-size: 150%; "></i>         <input type="text" name="email" id="email" placeholder=""></div>
+                        style="color: rgb(209, 22, 22);font-size: 150%; "></i>         <input type="text" name="email" id="email" placeholder="Gmail" required></div>
 
             <div class="bk"><i class="bi bi-telephone-fill"
-                style="color: rgb(9, 105, 0);font-size: 150%; "></i>  <input type="tel" id="phone" placeholder="Your Phone Number" required></div>
+                style="color: rgb(9, 105, 0);font-size: 150%; "></i>  <input type="tel" id="phone" placeholder="Phone Number" required ></div>
 
             <div class="bk"><i class="bi bi-cash-coin"
-                style="color: rgb(0, 136, 255);font-size: 150%; "></i>  <input type="number" id="quantity" placeholder="amount" required></div>
+                style="color: rgb(0, 136, 255);font-size: 150%; "></i>  <input type="number" id="quantity" placeholder="Amount" required></div>
 
-            <div class="bk"><i class="bi bi-bank"  style="color: rgb(21, 101, 240); font-size: 150%;"></i> <input type="text" id="bank" placeholder="convert to" required></div>
+            <div class="bk"><i class="bi bi-bank"  style="color: rgb(21, 101, 240); font-size: 150%;"></i> <input type="text" id="bank" placeholder="Convert to" required></div>
 
            <div class="bk"><i class="bi bi-alphabet-uppercase"
-                style="color: rgb(29, 46, 224); font-size: 200%; " ></i>  <input type="text" id="address" placeholder="name / number / amount" required></div>
+                style="color: rgb(29, 46, 224); font-size: 200%; " ></i>  <input type="text" id="address" placeholder="Account name / Id number / $amount" required></div>
 
             <button type="submit">Send</button>
         </form>
