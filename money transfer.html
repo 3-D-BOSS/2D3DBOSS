@@ -162,7 +162,7 @@
 
             history.forEach(function(entry) {
                 var entryDiv = document.createElement('div');
-                entryDiv.innerHTML = `<strong>${entry.name}</strong> -${entry.quantity} items <br><small>Phone: ${entry.phone} | <strong>${bank}</strong> - ${entry.address}</small>`;
+                entryDiv.innerHTML = `<strong>${entry.name}</strong> -${entry.quantity} items <br><small>Phone: ${entry.phone} | <strong>${entry.bank}</strong> - ${entry.address}</small>`;
                 historyContent.appendChild(entryDiv);
             });
         }
