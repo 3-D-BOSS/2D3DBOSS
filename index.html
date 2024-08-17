@@ -8,13 +8,15 @@
 </head>
 <body>
     <nav>
-        <h1>3D Boss</h1>
-       
+        <h1>3D BOSS</h1>
+       <div class="sa">1000 KS ဖိုး = 600000 KS</div>
+      
+<div class="his">
         <a href="history.html" style="color:white; margin-left: 50%;">History</a>
-
+    </div>
     </nav>
     <div class="container" id="searchContainer">
-        <input type="text" id="searchBar" placeholder="Search for a number...">
+        <input type="text" id="searchBar" placeholder="အမည် (သို့မဟုတ်) နံပတ်ဖြင့်ရှာပါ .......">
         <table id="resultsTable">
             <thead>
                 <tr>
@@ -25,12 +27,11 @@
             </thead>
             <tbody id="results"></tbody>
         </table>
-
     </div>
     <div class="container" id="detailsContainer" style="display: none;">
-      <div class="kpayname">( လွဲရမည့် kpay )<h3>နံပတ် = 09982030199</h3><h3>အမည် = wana tun </h3> </div>
-        <button id="backBtn">Back</button>
-        <img id="selectedPhoto" src="photo\" alt="">
+      <div class="kpayname">လွဲရမည့် kpay <h3>နံပတ် = </h3><h3>အမည် = </h3> <h2>ငွေအရင်လွှဲ ရပါမည်။</h2></div>
+      
+        <img id="selectedPhoto" src="" alt="">
         <p id="selectedNumber"></p>
         <p id="selectedAmount"></p>
         <input type="text" id="inputAmount" placeholder="Enter Kpayname" required>
@@ -42,10 +43,12 @@
         
         <div class="button">
         <button id="submitBtn">Send </button>
+        <button id="backBtn">Back</button>
+
       </div>
     </div>
 
-    <script src="photo\https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
     emailjs.init('80uAcGkKQNbay0xpB'); // Replace with your EmailJS user ID
@@ -1072,7 +1075,8 @@
         { number: ' 500  / လျှပ်စစ်မီး  ', name: '', photo: '998.jpg',   amount: '10000MMK'},
         { number: ' 480  / ပန်းကန်စင်  ', name: '', photo: '999.jpg',   amount: '10000MMK'},
         { number: ' 498 / သံကြုတ် / ဗူး  ', name: '', photo: '000.jpg',   amount: '10000MMK'},
-
+     
+        // Add more entries as needed
     ];
 
     searchBar.addEventListener('input', () => {
@@ -1082,7 +1086,7 @@
         numbers.filter(item => item.number.includes(query))
                .forEach(item => {
                     const tr = document.createElement('tr');
-                    tr.innerHTML = `<td><img src="photo\${item.photo}" alt="${item.name}"></td><td>${item.number}</td><td>${item.amount}</td>`;
+                    tr.innerHTML = `<td><img src="${item.photo}" alt="${item.name}"></td><td>${item.number}</td><td>${item.amount}</td>`;
                     tr.addEventListener('click', () => handleChoice(item));
                     results.appendChild(tr);
                });
@@ -1093,7 +1097,7 @@
         detailsContainer.style.display = 'block';
         selectedPhoto.src = item.photo;
         selectedNumber.textContent = `Number: ${item.number}`;
-        selectedAmount.textContent = `Initial Amount: ${item.amount}`;
+        selectedAmount.textContent = `အများဆုံး ငွေပမာဏ : ${item.amount}`;
         submitBtn.onclick = () => handleSubmit(item);
     }
 
@@ -1116,7 +1120,7 @@
                 const emailParams = {
                     from_name: userName,
                     to_name: 'recipient@example.com', // Replace with recipient email
-                    message: `User ${userName} selected number ${item.number} with initial amount ${item.amount}, kpay name ${amount}  transfer number ${time} amount$ ${day} email ${email},for 08/16/2024.`
+                    message: `User ${userName} selected number ${item.number} with အများဆုံး‌ ငွေပမာဏ ${item.amount}, kpay name ${amount}  transfer number ${time} amount$ ${day} email ${email},for 16/02/2024.`
                 };
 
                 emailjs.send('default_service', 'template_099mw1b', emailParams) // Replace with your service ID and template ID
@@ -1198,7 +1202,7 @@
         historyData.forEach(item => {
             const div = document.createElement('div');
             div.classList.add('history-item');
-            div.innerHTML = `<img src="photo\${item.photo}" alt="${item.name}"><div><p>Number: ${item.number}</p><p>Name: ${item.name}</p><p>Kpay Name: $${item.amount}</p><p>Time: ${item.timestamp}</p><p> amount$ ${item.day}</p><p>for 16/03/2024.</p></div>`;
+            div.innerHTML = `<img src="${item.photo}" alt="${item.name}"><div><p>Number: ${item.number}</p><p>Name: ${item.name}</p><p>Kpay Name: $${item.amount}</p><p>Time: ${item.timestamp}</p><p> amount$ ${item.day}</p><p>for 16/02/2024.</p></div>`;
             history.appendChild(div);
         });
     }
@@ -1229,9 +1233,10 @@ nav {
 }
 
 #searchBar {
-    width: 100%;
+    width: 70%;
     padding: 10px;
     margin-bottom: 20px;
+    border-radius: 20px;
 }
 h1{
     align-items: center;
@@ -1277,7 +1282,6 @@ tbody tr:hover {
 }
 
 #history {
-    
     margin-top: 20px;
 }
 
@@ -1320,6 +1324,21 @@ tbody tr:hover {
   font-size: 20px;
   background-color: #4535C1;
   border-radius: 20px;
+}
+#backBtn{
+    margin-top: 25px;
+  height: 30x;
+  width: 100%;
+  color: whitesmoke;
+  font-size: 20px;
+  background-color: #ff0000;
+  border-radius: 20px;
+}
+a{
+    margin-left: 30%;
+}
+.his{
+    margin-left: 50%;
 }
 </style>
 </html>
