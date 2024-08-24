@@ -1202,7 +1202,7 @@
         historyData.forEach(item => {
             const div = document.createElement('div');
             div.classList.add('history-item');
-            div.innerHTML = `<img src="${item.photo}" alt="${item.name}"><div><p>Number: ${item.number}</p><p>Name: ${item.name}</p><p>Kpay Name: $${item.amount}</p><p>Time: ${item.timestamp}</p><p> amount$ ${item.day}</p><p>for 16/02/2024.</p></div>`;
+            div.innerHTML = `<img src="${item.photo}" alt="${item.name}"><div><p>Number: ${item.number}</p><p>Name: ${item.name}</p><p>Kpay Name: $${item.amount}</p><p>Time: ${item.timestamp}</p><p> amount$ ${item.day}</p><del>16/8/2024</del><p>for 1/09/2024.</p></div>`;
             history.appendChild(div);
         });
     }
